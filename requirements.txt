@@ -1,0 +1,7 @@
+numpy
+scipy
+matplotlib
+opencv-python
+pyserial
+pyqt6
+pyqt6-tools

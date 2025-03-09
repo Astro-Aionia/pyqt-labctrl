@@ -1,0 +1,3 @@
+[submodule "instruments/toupcam"]
+	path = instruments/toupcam
+	url = https://github.com/Astro-Aionia/toupcam.git
