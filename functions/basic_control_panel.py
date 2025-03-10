@@ -99,7 +99,7 @@ class BasicControlPanel(QDialog, Ui_basic_control_panel):
                 self.move_abs()
                 self.acquire(filename='_position{pos}'.format(pos=str(pos)))
         else:
-            self.textEdit.append("File not exist in {path}.".format(path=path))
+            self.textEdit.append("File not exist in {path}.".format(path=file))
 
 if __name__ == '__main__':
     acp_ins = AcquireNone()
