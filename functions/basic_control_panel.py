@@ -22,14 +22,14 @@ class BasicControlPanel(QDialog, Ui_basic_control_panel):
     def __init__(self, parent=None, acq_instrument = AcquireNone()):
         QDialog.__init__(self, parent=parent)
         self.setupUi(self)
-        self.servo = Servo(port="COM1")
+        self.servo = Servo(port="COM8")
         self.initialize()
         self.position = 0
-        self.displacement = 0
+        self.displacement = 300
         self.velocity = float(self.lineEdit_7.text())
         self.move_abs()
         # self._acquire_num = 0
-        self.beam_position = []
+        # self.beam_position = []
         self.acq_instrument = acq_instrument
 
         self.pushButton_1.clicked.connect(lambda: self.move_pos())

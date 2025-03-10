@@ -4,7 +4,7 @@ from PyQt6 import QtWidgets
 sys.path.append(".\\instruments\\toupcam")
 from ui.mainwindow_UI import Ui_MainWindow
 from functions.basic_control_panel import BasicControlPanel
-from functions.beam_demo import BeamLocation
+from functions.beam_location import BeamLocation
 from PyQt6.QtWidgets import QApplication, QMainWindow
 
 

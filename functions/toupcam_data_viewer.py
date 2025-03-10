@@ -25,12 +25,14 @@ class ToupAccquire(QDialog, Ui_beam_location):
         time.sleep(2)
         self.counts = self.counts + 1
         if os.path.exists(path):
-            self.label_1.setPixmap(QPixmap(path).scaled(self.label.size()))
-            self.label.repaint()
+            self.label_2.setPixmap(QPixmap(path).scaled(self.label_2.size()))
+            self.label_2.repaint()
             return path
         else:
             print('No file in {path}'.format(path=path))
             return 'No file'
+    def clean(self):
+        self.counts = 0
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
