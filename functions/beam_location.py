@@ -3,7 +3,7 @@ import sys
 sys.path.append('..')
 sys.path.append('../instruments/toupcam')
 
-from ui.beam_location_UI import Ui_beam_location
+from ui.beam_location_viewer_UI import Ui_beam_location
 from functions.toupcam_data_viewer import ToupAccquire
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication
@@ -41,8 +41,9 @@ class BeamLocation(ToupAccquire, Ui_beam_location):
         self.pushButton_1.clicked.connect(lambda: self.clean())
         self.pushButton_2.clicked.connect(lambda: self.save_data())
     def acquire(self,path):
+        filename = str(self.counts).zfill(5) + '.tif'
         super().acquire(path)
-        self.beam_pos.append(circle_fit.circle_fit(circle_fit.get_border(circle_fit.get_binary(path))))
+        self.beam_pos.append(circle_fit.circle_fit(circle_fit.get_border(circle_fit.get_binary(path+'\\'+filename))))
         # print(self.beam_pos)
         self.x.append(self.counts)
         self.y.append(self.beam_pos[-1][1])

@@ -10,8 +10,7 @@ import matplotlib
 # Make sure that we are using QT5
 matplotlib.use('Qt5Agg')
 from PyQt6 import QtCore, QtWidgets
-from PyQt6.QtWidgets import QApplication, QMainWindow, QMenu, QVBoxLayout, QHBoxLayout, QSizePolicy, QWidget, \
-    QTextBrowser, QLineEdit
+from PyQt6.QtWidgets import QApplication, QMainWindow, QMenu, QVBoxLayout, QHBoxLayout, QSizePolicy, QWidget, QTextBrowser, QLineEdit
 import numpy as np
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure

@@ -3,7 +3,7 @@ import sys
 sys.path.append('..')
 sys.path.append('../instruments/toupcam')
 
-from ui.beam_location_UI import Ui_beam_location
+from ui.beam_location_viewer_UI import Ui_beam_location
 from functions.toupcam_demo import ToupDemo
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication

@@ -2,7 +2,7 @@ import os
 import sys
 sys.path.append('..')
 
-from ui.beam_location_UI import Ui_beam_location
+from ui.beam_location_viewer_UI import Ui_beam_location
 from PyQt6.QtWidgets import QApplication, QMainWindow, QDialog
 from PyQt6.QtGui import QPixmap
 
