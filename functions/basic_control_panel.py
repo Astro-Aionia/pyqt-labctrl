@@ -36,6 +36,7 @@ class BasicControlPanel(QDialog, Ui_basic_control_panel):
         self.velocity = float(self.lineEdit_6.text())
         self.save_path = "C:\\Users\\zhenggroup\\Python\\labctrl\\photos"
         self.move_abs()
+        self.get_pos()
         # self._acquire_num = 0
         # self.beam_position = []
         self.acq_instrument = acq_instrument
@@ -55,11 +56,14 @@ class BasicControlPanel(QDialog, Ui_basic_control_panel):
         self.pushButton_5.clicked.connect(lambda: self.acquire_list())
         self.pushButton_6.clicked.connect(lambda: self.acquire_listfile())
         self.lineEdit_6.editingFinished.connect(lambda: self.set_vel())
+        self.lineEdit_7.setReadOnly(True)
         self.fileSelcet_2.lineEdit.textChanged.connect(lambda: self.get_save_path())
 
     def set_vel(self):
         self.velocity = float(self.lineEdit_6.text())
         self.textEdit.append("Velocity set to {vel}".format(vel=self.velocity))
+    def get_pos(self):
+        self.lineEdit_7.setText("{pos}".format(pos=self.position))
     def move_abs(self):
         self.displacement = abs(self.position - float(self.lineEdit_2.text()))
         self.position = float(self.lineEdit_2.text())
@@ -67,6 +71,7 @@ class BasicControlPanel(QDialog, Ui_basic_control_panel):
         self.textEdit.append("Moving to {pos} mm...".format(pos=self.position))
         QApplication.processEvents()
         self.servo.moveabs(pos=self.position,vel=self.velocity,sleep=self.displacement/self.velocity)
+        self.get_pos()
         self.textEdit.append("Done.")
         self.servo.disconnect()
     def move_pos(self):
@@ -76,6 +81,7 @@ class BasicControlPanel(QDialog, Ui_basic_control_panel):
         QApplication.processEvents()
         self.servo.moveinc(pos=self.displacement, vel=self.velocity, sleep=self.displacement / self.velocity)
         self.position = self.position + self.displacement
+        self.get_pos()
         self.textEdit.append("Done.")
         self.servo.disconnect()
     def move_neg(self):
@@ -85,6 +91,7 @@ class BasicControlPanel(QDialog, Ui_basic_control_panel):
         QApplication.processEvents()
         self.servo.moveinc(pos=-self.displacement, vel=self.velocity, sleep=self.displacement / self.velocity)
         self.position = self.position - self.displacement
+        self.get_pos()
         self.textEdit.append("Done.")
         self.servo.disconnect()
     def get_save_path(self):
